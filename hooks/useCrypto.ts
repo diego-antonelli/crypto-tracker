@@ -1,40 +1,52 @@
-import { useSelector, useDispatch } from 'react-redux';
-import {useCallback, useEffect, useState} from 'react';
-import {getCryptos, resetCoins, setPage} from "@/stores/slices/cryptoSlice";
-import {AppDispatch, RootState} from "@/types";
+import { useCallback, useState } from 'react';
+import { getCryptos, resetCoins } from '@/stores/slices/cryptoSlice';
+import { RootState } from '@/types';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import Toast from 'react-native-toast-message';
 
 export const useCryptoCoins = () => {
-    const dispatch = useDispatch<AppDispatch>();
-    const { data, loading, error, page } = useSelector((state: RootState) => state.cryptos);
-    const [isRefreshing, setIsRefreshing] = useState(false);
+  const dispatch = useAppDispatch();
+  const { data, loading, error, page } = useAppSelector((state: RootState) => state.cryptos);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isFetchingMore, setIsFetchingMore] = useState(false);
 
-    useEffect(() => {
-        if (data.length === 0) {
-            dispatch(getCryptos(1));
-        }
-        //@eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+  const initialLoad = useCallback(() => {
+    console.log('Initial load of crypto data...');
+    if (data.length === 0) {
+      dispatch(getCryptos(1));
+    }
+  }, [dispatch, data]);
 
-    const fetchNext = useCallback(() => {
-        const nextPage = page + 1;
-        dispatch(setPage(nextPage));
-        dispatch(getCryptos(nextPage));
-    }, [dispatch, page]);
+  const fetchNext = useCallback(() => {
+    setIsFetchingMore(true);
+    const nextPage = page + 1;
+    console.log('Fetching next page of crypto data...', nextPage);
+    dispatch(getCryptos(nextPage));
+    setIsFetchingMore(false);
+  }, [dispatch, page]);
 
-    const refresh = useCallback(() => {
-        setIsRefreshing(true);
-        dispatch(resetCoins());
-        dispatch(getCryptos(1));
-        setIsRefreshing(false);
-    }, [dispatch]);
+  const refresh = useCallback(() => {
+    console.log('Refreshing crypto data...');
+    setIsRefreshing(true);
+    dispatch(resetCoins());
+    dispatch(getCryptos(1));
+    setIsRefreshing(false);
+    Toast.show({
+      type: 'success',
+      text1: 'Cryptos refreshed!',
+      text2: 'Your crypto list got refreshed.',
+    });
+  }, [dispatch]);
 
-    return {
-        data,
-        isLoading: loading,
-        isRefreshing,
-        error,
-        page,
-        fetchNext,
-        refresh,
-    };
+  return {
+    data,
+    isLoading: loading,
+    initialLoad,
+    isRefreshing,
+    isFetchingMore,
+    error,
+    fetchNext,
+    refresh,
+  };
 };

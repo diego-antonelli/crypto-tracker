@@ -1,15 +1,16 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { DarkTheme, DefaultTheme, ThemeProvider as NavigationThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import {Stack} from 'expo-router';
+import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import 'react-native-reanimated';
-import {ThemeProvider} from '@/providers';
-import {Appearance, StatusBar, useColorScheme} from 'react-native';
-import {SafeAreaProvider} from "react-native-safe-area-context";
-import {Provider} from "react-redux";
-import {store} from "@/stores";
+import { Provider } from 'react-redux';
+import { store } from '@/stores';
+import { ThemedProviders } from '@/providers';
+import { LogBox } from 'react-native';
+
+// Suppress specific warnings that are not relevant to the app's functionality.
+LogBox.ignoreLogs([/Cannot update a component/]);
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -18,7 +19,7 @@ export {
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
+  initialRouteName: 'index',
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -49,24 +50,16 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-  const isDarkMode = useColorScheme() === 'dark';
   return (
+    <>
       <Provider store={store}>
-        <StatusBar
-            barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-            backgroundColor="transparent"
-            translucent={true}
-        />
-        <SafeAreaProvider>
-          <ThemeProvider>
-            <NavigationThemeProvider value={isDarkMode ? DarkTheme : DefaultTheme}>
-              <Stack>
-                <Stack.Screen name="index" options={{headerShown: false, headerTitle: "Home"}} />
-                <Stack.Screen name="coin/[id]" options={{ headerTitle: 'Coin details' }} />
-              </Stack>
-            </NavigationThemeProvider>
-          </ThemeProvider>
-        </SafeAreaProvider>
+        <ThemedProviders>
+          <Stack>
+            <Stack.Screen name="index" options={{ headerShown: false, headerTitle: 'Home' }} />
+            <Stack.Screen name="coin/[id]" />
+          </Stack>
+        </ThemedProviders>
       </Provider>
+    </>
   );
 }
