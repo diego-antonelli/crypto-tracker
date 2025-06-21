@@ -8,7 +8,7 @@ import { useMemo } from 'react';
 import { useTheme } from '@/hooks';
 import { Stack } from 'expo-router';
 
-export function CoinDetailsView({ coin }: { coin: Crypto | null }) {
+export function CoinDetailsView({ coin }: { coin?: Crypto }) {
   const { theme } = useTheme();
   const isPositive = useMemo(() => (coin?.price_change_percentage_24h ?? 0) >= 0, [coin]);
 

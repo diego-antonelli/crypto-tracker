@@ -10,7 +10,7 @@ export function CoinDetails() {
   const { data } = useCryptoCoins();
   const router = useRouter();
 
-  const [coin, setCoin] = useState<Crypto | null>(null);
+  const [coin, setCoin] = useState<Crypto | undefined>(undefined);
 
   useEffect(() => {
     const match = data?.find((c: Crypto) => c.id === id);
