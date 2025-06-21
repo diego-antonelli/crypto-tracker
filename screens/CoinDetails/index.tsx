@@ -1,6 +1,6 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useMemo, useState } from 'react';
-import { View, Text, ActivityIndicator, Image, ScrollView } from 'react-native';
+import { View, Text, Image, ScrollView } from 'react-native';
 import { useCryptoCoins, useTheme } from '@/hooks';
 import { Crypto } from '@/types';
 import { LineChart } from '@/components/LineChart';

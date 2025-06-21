@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useLayoutEffect } from 'react';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { RootState, ThemeOptions } from '@/types';
@@ -14,8 +14,10 @@ export const useTheme = () => {
     dispatch(setTheme({ theme, manuallySet: true }));
   }, []);
 
-  useEffect(() => {
+  // Checks the theme before painting the component
+  useLayoutEffect(() => {
     if (!manuallySet) {
+      // If the theme was not manually set, use the system color scheme at first load
       dispatch(setTheme({ theme: systemColorScheme as ThemeOptions, manuallySet: false }));
     }
     //@eslint-disable-next-line react-hooks/exhaustive-deps

@@ -12,7 +12,7 @@ export const useCryptoCoins = () => {
   const [isFetchingMore, setIsFetchingMore] = useState(false);
 
   const initialLoad = useCallback(() => {
-    console.log('Initial load of crypto data...');
+    console.debug('Initial load of crypto data...');
     if (data.length === 0) {
       dispatch(getCryptos(1));
     }
@@ -21,23 +21,31 @@ export const useCryptoCoins = () => {
   const fetchNext = useCallback(() => {
     setIsFetchingMore(true);
     const nextPage = page + 1;
-    console.log('Fetching next page of crypto data...', nextPage);
+    console.debug('Fetching next page of crypto data...', nextPage);
     dispatch(getCryptos(nextPage));
     setIsFetchingMore(false);
   }, [dispatch, page]);
 
   const refresh = useCallback(() => {
-    console.log('Refreshing crypto data...');
+    console.debug('Refreshing crypto data...');
     setIsRefreshing(true);
     dispatch(resetCoins());
     dispatch(getCryptos(1));
     setIsRefreshing(false);
-    Toast.show({
-      type: 'success',
-      text1: 'Cryptos refreshed!',
-      text2: 'Your crypto list got refreshed.',
-    });
-  }, [dispatch]);
+    if (!error) {
+      Toast.show({
+        type: 'success',
+        text1: 'Cryptos refreshed!',
+        text2: 'Your crypto list got refreshed.',
+      });
+    } else {
+      Toast.show({
+        type: 'error',
+        text1: 'Failed to refresh cryptos',
+        text2: error || 'An unknown error occurred while refreshing.',
+      });
+    }
+  }, [dispatch, error]);
 
   return {
     data,
