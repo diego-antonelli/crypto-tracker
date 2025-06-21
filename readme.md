@@ -20,6 +20,9 @@ Crypto Tracker is a React Native application that allows users to track cryptocu
 | Success    | ![Success Message](./assets/screenshots/success-dark.png) |                                                             |                                                               |
 | Error      | ![Error Message](./assets/screenshots/error-dark.png)     |                                                             |                                                               |
 
+### Infinite Scrolling
+![Infinite Scrolling](./assets/screenshots/infinite-scrolling.gif)
+
 ## Features
 
 - **Cryptocurrency List**: Displays a list of cryptocurrencies with their names and symbols.
