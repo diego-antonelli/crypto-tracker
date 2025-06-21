@@ -97,7 +97,7 @@ Crypto Tracker is a React Native application that allows users to track cryptocu
 
 ## APIs
 
-The app fetches cryptocurrency data from CoinGecko using the free tier. For production use, consider using a more robust API or caching strategy to handle rate limits and ensure reliability. As this app contains free apis, not ApiKey is needed.
+The app fetches cryptocurrency data from CoinGecko using the free tier. For production use, consider using a more robust API or caching strategy to handle rate limits and ensure reliability. As this app contains free apis, no ApiKey is needed.
 
 ## Installation and Usage
 
@@ -119,15 +119,21 @@ The app fetches cryptocurrency data from CoinGecko using the free tier. For prod
    ```
 3. Start the development server:
    ```bash
-    yarn start
+   yarn start
    ```
 4. Open the app on a mobile device or emulator using the Expo Go app or running.
-
-   ```bash
-     For Android: yarn android
-     For iOS: yarn ios
-     For Web: yarn web
-   ```
+   - For Android:
+      ```bash
+      yarn android
+      ```
+   - For iOS:
+      ```bash
+      yarn ios
+      ```
+   - For Web:
+      ```bash
+      yarn web
+      ```
 
 5. To execute the tests, run:
    ```bash
@@ -139,7 +145,7 @@ The app fetches cryptocurrency data from CoinGecko using the free tier. For prod
    ```
 7. To run prettier, run:
    ```bash
-     yarn format
+   yarn format
    ```
 
 ### Improvements and Future Work
