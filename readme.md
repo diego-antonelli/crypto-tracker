@@ -6,17 +6,19 @@ Crypto Tracker is a React Native application that allows users to track cryptocu
 
 ### Light mode
 
-| Status     | Home Screen                                           | Home Screen filtered                                         | Coin Details Screen                                            |
-|------------|-------------------------------------------------------|--------------------------------------------------------------|----------------------------------------------------------------|
-| Functional | ![Home Screen](./assets/screenshots/home-light.png)   | ![Home Screen](./assets/screenshots/home-filtered-light.png) | ![Coin Details Screen](./assets/screenshots/details-light.png) |
-| Error      | ![Error Screen](./assets/screenshots/error-light.png) |                                                              |                                                                |
+| Status     | Home Screen                                                | Home Screen filtered                                         | Coin Details Screen                                            |
+|------------|------------------------------------------------------------|--------------------------------------------------------------|----------------------------------------------------------------|
+| Functional | ![Home Screen](./assets/screenshots/home-light.png)        | ![Home Screen](./assets/screenshots/home-filtered-light.png) | ![Coin Details Screen](./assets/screenshots/details-light.png) |
+| Success    | ![Success Message](./assets/screenshots/success-light.png) |                                                              |                                                                |
+| Error      | ![Error Message](./assets/screenshots/error-light.png)     |                                                              |                                                                |
 
 ### Dark mode
 
-| Status     | Home Screen                                          | Home Screen filtered                                        | Coin Details Screen                                           |
-|------------|------------------------------------------------------|-------------------------------------------------------------|---------------------------------------------------------------|
-| Functional | ![Home Screen](./assets/screenshots/home-dark.png)   | ![Home Screen](./assets/screenshots/home-filtered-dark.png) | ![Coin Details Screen](./assets/screenshots/details-dark.png) |
-| Error      | ![Error Screen](./assets/screenshots/error-dark.png) |                                                             |                                                               |
+| Status     | Home Screen                                               | Home Screen filtered                                        | Coin Details Screen                                           |
+|------------|-----------------------------------------------------------|-------------------------------------------------------------|---------------------------------------------------------------|
+| Functional | ![Home Screen](./assets/screenshots/home-dark.png)        | ![Home Screen](./assets/screenshots/home-filtered-dark.png) | ![Coin Details Screen](./assets/screenshots/details-dark.png) |
+| Success    | ![Success Message](./assets/screenshots/success-dark.png) |                                                             |                                                               |
+| Error      | ![Error Message](./assets/screenshots/error-dark.png)     |                                                             |                                                               |
 
 ## Features
 
