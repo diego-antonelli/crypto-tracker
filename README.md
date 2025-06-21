@@ -32,36 +32,7 @@ Crypto Tracker is a React Native application that allows users to track cryptocu
 - **Error Handling**: Displays error messages using toast notifications.
 - **Theming**: Supports light and dark themes based on the system's color scheme or user preference.
 
-## File Structure
-
-```javascript
-── components/
-│ ├── CryptoItem.tsx
-│ ├── Header.tsx
-│ ├── LineChart.tsx
-│ ├── Metric.tsx
-│ ├── Toast.tsx
-├── hooks/
-│ ├── useCryptoCoins.ts
-│ ├── useTheme.ts
-├── screens/
-│ ├── CoinDetails/
-│ │ ├── index.tsx
-│ │ ├── styles.ts
-│ ├── Home/
-│ │ ├── index.tsx
-│ │ ├── styles.ts
-├── services/
-│ ├── coingecko.ts
-├── stores/
-│ ├── slices/
-│ │ ├── cryptoSlice.ts
-│ │ ├── themeSlice.ts
-├── theme/
-│ ├── index.ts
-├── types/
-│ ├── index.ts
-```
+## File Structure and Organization
 
 - **components/**: Contains reusable UI components like `CryptoItem`, `Header`, `LineChart`, `Metric`, and `Toast`.
 - **hooks/**: Custom hooks for fetching cryptocurrency data and managing themes.
