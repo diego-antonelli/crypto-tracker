@@ -48,7 +48,7 @@ export function HomeScreen() {
     () =>
       isFetchingMore ? (
         <View style={styles.footer}>
-          <ActivityIndicator color={theme.text} />
+          <ActivityIndicator color={theme.text} testID="activity-indicator" />
         </View>
       ) : null,
     [isFetchingMore, theme.text],
@@ -82,6 +82,7 @@ export function HomeScreen() {
         style={[styles.textBox, { color: theme.text, backgroundColor: theme.card }]}
       />
       <FlatList
+        testID="crypto-list"
         data={filteredData}
         keyExtractor={(item) => item.id}
         refreshControl={refreshComponent}

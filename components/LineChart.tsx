@@ -19,7 +19,7 @@ export function LineChart({
   );
 
   return (
-    <View style={[styles.container, style]}>
+    <View style={[styles.container, style]} testID="line-chart">
       {/* @ts-expect-error - TypeScript does not recognize the JSX component */}
       <RNLineChart
         style={styles.chartContainer}

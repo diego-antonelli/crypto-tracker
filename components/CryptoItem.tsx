@@ -18,6 +18,7 @@ export const CryptoItem = memo(({ item }: { item: Crypto }) => {
   return (
     <Animated.View entering={FadeInRight.duration(400)}>
       <TouchableOpacity
+        testID="crypto-item-touchable"
         onPress={() => {
           router.push(`/coin/${item.id}`);
         }}

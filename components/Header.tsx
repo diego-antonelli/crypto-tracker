@@ -11,9 +11,11 @@ export default function Header() {
   }, [themeName, setTheme]);
 
   return (
-    <View style={[styles.header, { backgroundColor: theme.card }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Crypto Tracker</Text>
-      <Switch onValueChange={onToggleTheme} value={themeName === 'dark'} />
+    <View style={[styles.header, { backgroundColor: theme.card }]} testID="header-container">
+      <Text style={[styles.title, { color: theme.text }]} testID="header-title">
+        Crypto Tracker
+      </Text>
+      <Switch onValueChange={onToggleTheme} value={themeName === 'dark'} testID="theme-switch" />
     </View>
   );
 }
