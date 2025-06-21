@@ -118,8 +118,15 @@ The app fetches cryptocurrency data from CoinGecko using the free tier. For prod
    ```bash
    yarn format
    ```
+### Optional Steps for Native Builds
 
-### Improvements and Future Work
+If you want to build the app for production or run it natively, run:
+    ```bash
+    yarn prebuild
+    ```
+This will generate `ios` and `android` folders needed if you plan to release the app on app stores or run it natively.
+
+## Improvements and Future Work
 
 - Implement caching for API responses to reduce load times and API calls.
 - Add more detailed coin information and historical data.
