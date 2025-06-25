@@ -1,9 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchCryptos } from '@/services/coingecko';
+import { fetchCryptosThrottled } from '@/services/coingecko';
 import { Crypto } from '@/types';
 
 export const getCryptos = createAsyncThunk('cryptos/getCryptos', async (page?: number) => {
-  return await fetchCryptos(page);
+  const throttledFetch = await new Promise<{ page: number; items: Crypto[] }>((resolve, reject) =>
+    fetchCryptosThrottled(page, resolve, reject),
+  );
+  console.log('Fetched cryptos:', throttledFetch);
+  return throttledFetch;
 });
 
 interface State {

@@ -76,7 +76,7 @@ export function HomeView({
         windowSize={10}
         onEndReached={onLoadMore}
         // When the user reaches 25% of the screen list it will trigger the load more function
-        onEndReachedThreshold={0.25}
+        onEndReachedThreshold={0.1}
       />
     </View>
   );
